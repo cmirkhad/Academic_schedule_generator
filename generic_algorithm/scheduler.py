@@ -36,7 +36,7 @@ class GeneticAlgorithmScheduler:
                     teacher = next(t for t in teachers if t.id == teacher_id)
                     classroom = random.choice(classrooms)
                     day = random.choice(range(5))
-                    slot = random.choice(range(10))  # Allow space for 2-hour blocks
+                    slot = random.choice(range(9))  # Allow space for 2-hour blocks
                     individual.append((group, subject, teacher, classroom, day, slot))
                     individual.append((group, subject, teacher, classroom, day, slot + 1))
         return individual

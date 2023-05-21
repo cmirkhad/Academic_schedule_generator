@@ -1,6 +1,7 @@
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-
+import requests
+import datetime
 from utils.print_helpers import convert_schedule_to_required_format, receive_data
 from .scheduler import GeneticAlgorithmScheduler
 import json
@@ -16,8 +17,19 @@ def generate_schedule(request):
         best_individual = ga.run()
 
         converted_schedule = convert_schedule_to_required_format(best_individual)
+        url = 'https://schedule-back.herokuapp.com/api/schedule'
+        session = requests.Session()
 
-        return JsonResponse(converted_schedule)
+        data = {
+            'year': datetime.datetime.today().isoformat(),
+            'name': 'fix schedule',
+            'semester': 1,
+            'days': converted_schedule
+        }
+        response = session.post(url, json=data)
+
+
+        return JsonResponse(response.json(), status=response.status_code)
 
     else:
         return JsonResponse({"error": "Only POST method is allowed"}, status=405)
