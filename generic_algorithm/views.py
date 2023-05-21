@@ -19,11 +19,12 @@ def generate_schedule(request):
         converted_schedule = convert_schedule_to_required_format(best_individual)
         url = 'https://schedule-back.herokuapp.com/api/schedule'
         session = requests.Session()
-
+        sh_name = data.get('name')
+        semester = data.get('semester')
         data = {
             'year': datetime.datetime.today().isoformat(),
-            'name': 'fix schedule',
-            'semester': 1,
+            'name': sh_name,
+            'semester': semester,
             'days': converted_schedule
         }
         response = session.post(url, json=data)
