@@ -9,7 +9,7 @@ class GeneticAlgorithmScheduler:
         self.groups = groups
         self.teachers = teachers
         self.subjects = subjects
-        self.population_size = 100
+        self.population_size = 1000
         self.num_generations = 50
         self.cx_prob = 0.8
         self.mut_prob = 0.4

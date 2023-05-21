@@ -29,3 +29,5 @@ def fetch_data_from_db():
 
 
 
+def fetch_data_from_post_request():
+    pass
