@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-qx(z69$9o@c_ym#*$fqxppdzh+@4adb^$&j6wem3+e0s5xxk42
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['academicschedulegenerator.herokuapp.com']
 
 
 # Application definition
