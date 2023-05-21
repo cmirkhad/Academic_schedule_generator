@@ -89,7 +89,7 @@ def receive_data(data):
                 id=subject.get('_id'),
                 subj_name=subject.get('name'),
                 code=subject.get('code'),
-                teachers=teachers,
+                teachers=teachers_data[0].get('_id'),
                 credits=subject.get('credits'),
                 semester=subject.get('semester'),
                 course=subject.get('courses')[0] if subject.get('courses') else None,

@@ -9,7 +9,7 @@ class GeneticAlgorithmScheduler:
         self.groups = groups
         self.teachers = teachers
         self.subjects = subjects
-        self.population_size = 1000
+        self.population_size = 100
         self.num_generations = 50
         self.cx_prob = 0.8
         self.mut_prob = 0.4
@@ -29,14 +29,14 @@ class GeneticAlgorithmScheduler:
         individual = creator.Individual()
         for group in groups:
             for subject in subjects:
-                if (subject.semester == 2 or str(group.course) != subject.course[1:-1]):
+                if (subject.semester == 2 or group.course != subject.course):
                     continue
                 for _ in range(subject.number_of_hours // 2):  # Prioritize 2-hour blocks
-                    teacher_id = subject.teachers.strip('{}').split(',')[0]
+                    teacher_id = subject.teachers
                     teacher = next(t for t in teachers if t.id == teacher_id)
                     classroom = random.choice(classrooms)
                     day = random.choice(range(5))
-                    slot = random.choice(range(9))  # Allow space for 2-hour blocks
+                    slot = random.choice(range(10))  # Allow space for 2-hour blocks
                     individual.append((group, subject, teacher, classroom, day, slot))
                     individual.append((group, subject, teacher, classroom, day, slot + 1))
         return individual
@@ -112,7 +112,7 @@ class GeneticAlgorithmScheduler:
                     if cell:
                         subject_hours[cell['subject']] += 1
             for subject in subjects:
-                if str(course) == subject.course[1:-1].split(','):
+                if course == subject.course:
                     if subject_hours[subject.id] != subject.number_of_hours:
                         score += 5 * abs(subject_hours[subject.id] - subject.number_of_hours)
 
