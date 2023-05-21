@@ -20,4 +20,4 @@ def generate_schedule(request):
         return JsonResponse(converted_schedule)
 
     else:
-        return JsonResponse({"error": "Only POST method is allowed"}, status=400)
+        return JsonResponse({"error": "Only POST method is allowed"}, status=405)
