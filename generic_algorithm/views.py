@@ -8,7 +8,7 @@ import json
 @csrf_exempt
 def generate_schedule(request):
     if request.method == 'POST':
-        data = json.loads(request.body)
+        data = json.loads(request.body.decode('utf-8'))  # Decode the request body
 
         classrooms, groups, teachers, subjects = receive_data(data)
 
