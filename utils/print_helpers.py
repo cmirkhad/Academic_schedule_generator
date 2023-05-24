@@ -15,7 +15,7 @@ def print_schedule(schedule):
 
 
 def convert_schedule_to_required_format(best_individual):
-    days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+    days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
     schedule = [
         {
             'day': day,
