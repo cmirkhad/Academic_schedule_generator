@@ -12,6 +12,7 @@ def generate_schedule(request):
         data = json.loads(request.body.decode('utf-8'))  # Decode the request body
 
         classrooms, groups, teachers, subjects = receive_data(data)
+        semester = data.get('semester')
 
         ga = GeneticAlgorithmScheduler(groups=groups, teachers=teachers, classrooms=classrooms, subjects=subjects)
         best_individual = ga.run()
@@ -20,7 +21,7 @@ def generate_schedule(request):
         url = 'https://schedule-back.herokuapp.com/api/schedule'
         session = requests.Session()
         sh_name = data.get('name')
-        semester = data.get('semester')
+
         data = {
             'year': datetime.datetime.today().isoformat(),
             'name': sh_name,

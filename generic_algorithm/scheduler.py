@@ -29,7 +29,7 @@ class GeneticAlgorithmScheduler:
         individual = creator.Individual()
         for group in groups:
             for subject in subjects:
-                if (subject.semester == 2 or group.course != subject.course):
+                if (group.course != subject.course):
                     continue
                 for _ in range(subject.number_of_hours // 2):  # Prioritize 2-hour blocks
                     teacher_id = subject.teachers
