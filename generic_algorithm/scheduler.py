@@ -10,7 +10,7 @@ class GeneticAlgorithmScheduler:
         self.teachers = teachers
         self.subjects = subjects
         self.population_size = 100
-        self.num_generations = 50
+        self.num_generations = 25
         self.cx_prob = 0.8
         self.mut_prob = 0.4
         creator.create("FitnessMin", base.Fitness, weights=(-1.0,))
